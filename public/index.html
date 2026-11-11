@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GlassExport · Back-office</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Vidrine</h1>
+    <nav>
+      <button data-tab="catalog" class="on">Preços por país</button>
+      <button data-tab="products">Produtos</button>
+      <button data-tab="rates">Câmbio</button>
+    </nav>
+  </header>
+  <div id="toast" role="status"></div>
+
+  <main>
+    <section id="catalog">
+      <div class="bar">
+        <label>País de destino <select id="country"></select></label>
+        <p id="rateInfo" class="muted"></p>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>SKU</th><th>Produto</th><th class="n">Capacidade</th><th class="n">Custo (BRL)</th><th class="n">Preço (BRL)</th><th class="n">Preço no destino</th></tr></thead>
+        <tbody id="catalogRows"></tbody>
+      </table></div>
+    </section>
+
+    <section id="products" hidden>
+      <form id="form">
+        <input type="hidden" name="id">
+        <label>SKU <input name="sku" required></label>
+        <label>Nome <input name="name" required></label>
+        <label>Capacidade (ml) <input name="capacity_ml" type="number" min="1" step="any" required></label>
+        <label>Custo (BRL) <input name="cost_brl" type="number" min="0" step="0.01" required></label>
+        <label>Estoque <input name="stock" type="number" min="0" step="1" value="0" required></label>
+        <div class="actions"><button class="primary" type="submit">Salvar produto</button><button type="button" id="cancel" hidden>Cancelar edição</button></div>
+      </form>
+      <div class="scroll"><table>
+        <thead><tr><th>SKU</th><th>Produto</th><th class="n">ml</th><th class="n">Custo (BRL)</th><th class="n">Estoque</th><th></th></tr></thead>
+        <tbody id="productRows"></tbody>
+      </table></div>
+    </section>
+
+    <section id="rates" hidden>
+      <div class="bar"><button class="primary" id="refresh">Atualizar câmbio agora</button><p class="muted">1 BRL equivale a:</p></div>
+      <div class="scroll"><table>
+        <thead><tr><th>Moeda</th><th class="n">Taxa</th><th>Fonte</th><th>Atualizado</th></tr></thead>
+        <tbody id="rateRows"></tbody>
+      </table></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

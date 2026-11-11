@@ -1,0 +1,9 @@
+{
+  "name": "glassexport-backoffice",
+  "version": "1.0.0",
+  "description": "Back-office de exportação de copos de vidro com preços por moeda (lucro de 100%)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=22.5" },
+  "dependencies": { "express": "^4.19.2" }
+}
